@@ -1,97 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>afas22 Blog</title>
-    <style>
-        body {
-            
-            font-family: "Courier New", Courier, monospace;
-            color: #000;
-            margin: 0;
-            padding: 0;
-        }
-        h1 {
-            color: #ff4500;
-            text-align: center;
-            text-shadow: 2px 2px #00ffff;
-        }
-        .nav {
-            background-color: #0000ff;
-            padding: 10px;
-            text-align: center;
-            border-bottom: 3px solid #000;
-        }
-        .nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-            font-size: 18px;
-        }
-        .nav a:hover {
-            color: #00ff00;
-        }
-        .content {
-            margin: 20px auto;
-            padding: 20px;
-            width: 90%;
-            max-width: 800px;
-            border: 2px dashed #ff69b4;
-            background-color: #ffffff;
-        }
-        .post {
-            margin-bottom: 20px;
-            padding: 10px;
-            border: 2px solid #000;
-            background-color: #ffdead;
-        }
-        .post-title {
-            font-size: 24px;
-            color: #ff4500;
-            text-shadow: 1px 1px #00ffff;
-        }
-        .post-meta {
-            font-size: 12px;
-            color: #555;
-            margin-bottom: 10px;
-        }
-        .footer {
-            background-color: #0000ff;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-            border-top: 3px solid #000;
-        }
-        .footer a {
-            color: #00ff00;
-            text-decoration: none;
-        }
-        .footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Posts</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    .blog-post {
+      background-color: #ffe4c4;
+      margin: 10px auto;
+      padding: 15px;
+      border: 1px solid #000;
+      width: 90%;
+      max-width: 600px;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    .blog-title {
+      font-weight: bold;
+      color: #d2691e;
+      margin-bottom: 5px;
+    }
+    .blog-date {
+      font-size: 0.9em;
+      color: #888;
+      margin-bottom: 10px;
+    }
+    .blog-content {
+      display: none;
+    }
+    .read-more {
+      color: #007bff;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-    <h1>afas22</h1>
-    <div class="nav">
-        <a href="#home">Home</a>
-    </div>
-    <div class="content">
-        <div class="post">
-            <h2 class="post-title">First Blog Post</h2>
-            <p class="post-meta">Posted on November 20, 2024</p>
-            <p>Welcome to PluBlog! This is your first post. Feel free to edit or delete it and start sharing your thoughts.</p>
-        </div>
-        <div class="post">
-            <h2 class="post-title">Another Retro Story</h2>
-            <p class="post-meta">Posted on November 19, 2024</p>
-            <p>Once upon a time in the 90s, websites looked vibrant and alive with GIFs and neon colors. Let's bring that nostalgia back!</p>
-        </div>
-    </div>
-    <div class="footer">
-        <p>&copy; 2024 afas22 </p>
-    </div>
+  <div class="blog-post">
+    <div class="blog-title">First Blog Post</div>
+    <div class="blog-date">Posted on November 20, 2024</div>
+    <div class="blog-intro">Welcome to PluBlog! This is your first post. Feel free to edit or delete it and start sharing your thoughts...</div>
+    <div class="blog-content"> Here is the full content of the first blog post. Feel free to add more details and engage your audience!</div>
+    <div class="read-more">Devamını oku</div>
+  </div>
+  <div class="blog-post">
+    <div class="blog-title">Another Retro Story</div>
+    <div class="blog-date">Posted on November 19, 2024</div>
+    <div class="blog-intro">Once upon a time in the 90s, websites looked vibrant and alive with GIFs and neon colors...</div>
+    <div class="blog-content"> Websites were filled with blinking text, pixel art, and bright flashing banners! Let's dive into the nostalgia together!</div>
+    <div class="read-more">Devamını oku</div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.read-more').forEach(button => {
+      button.addEventListener('click', function () {
+        // Tüm postların detaylarını kapat
+        document.querySelectorAll('.blog-content').forEach(content => {
+          content.style.display = 'none';
+        });
+        // Tüm "Devamını oku" metinlerini geri döndür
+        document.querySelectorAll('.read-more').forEach(btn => {
+          btn.textContent = 'Devamını oku';
+        });
+
+        // Şu anki postu aç
+        const content = this.previousElementSibling;
+        if (content.style.display === 'none') {
+          content.style.display = 'block';
+          this.textContent = 'Kapat';
+        } else {
+          content.style.display = 'none';
+          this.textContent = 'Devamını oku';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
