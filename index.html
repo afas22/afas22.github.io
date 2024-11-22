@@ -3,35 +3,96 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>90's Blog</title>
+  <title>Modern Dark Blog</title>
   <style>
+    /* Genel Stil */
     body {
-      font-family: "Courier New", Courier, monospace;
-      background-color: #fdf5e6;
-      color: #000;
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #ffffff;
       margin: 0;
       padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
     }
     h1 {
+      color: #ff8c00;
+      margin-top: 20px;
       text-align: center;
-      color: #ff4500;
-      text-shadow: 2px 2px #000;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
-    .navbar {
-      background-color: #ffcc00;
-      padding: 10px;
-      text-align: center;
-      box-shadow: 2px 2px 5px #000;
-    }
-    .navbar a {
-      color: #000;
+    a {
+      color: #ff8c00;
       text-decoration: none;
-      font-weight: bold;
-      margin: 0 15px;
     }
-    .navbar a:hover {
+    a:hover {
       text-decoration: underline;
     }
+
+    /* Navbar */
+    .navbar {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      background-color: #1e1e1e;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+    .navbar a {
+      margin: 0 15px;
+      font-size: 1.1em;
+    }
+
+    /* Blog Post */
+    .blog-post {
+      background-color: #1e1e1e;
+      width: 80%;
+      max-width: 600px;
+      margin: 20px 0;
+      padding: 15px 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      transition: transform 0.2s ease-in-out;
+    }
+    .blog-post:hover {
+      transform: translateY(-5px);
+    }
+    .blog-title {
+      font-size: 1.5em;
+      margin-bottom: 5px;
+      color: #ff8c00;
+    }
+    .blog-date {
+      font-size: 0.9em;
+      color: #888;
+      margin-bottom: 15px;
+    }
+    .blog-intro {
+      line-height: 1.6;
+    }
+    .blog-content {
+      display: none;
+      line-height: 1.6;
+      margin-top: 10px;
+    }
+    .read-more {
+      color: #00bfff;
+      cursor: pointer;
+      margin-top: 10px;
+      display: inline-block;
+    }
+    .read-more:hover {
+      text-decoration: underline;
+    }
+
+    /* Popup */
     .popup {
       display: none;
       position: fixed;
@@ -39,54 +100,36 @@
       left: 50%;
       transform: translate(-50%, -50%);
       width: 300px;
-      background: #fff;
       padding: 20px;
-      border: 2px solid #000;
-      box-shadow: 5px 5px 10px #555;
+      background: #1e1e1e;
+      color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      z-index: 1000;
     }
     .popup h3 {
       margin-top: 0;
-      text-align: center;
+      color: #ff8c00;
     }
     .popup-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 20px;
+      color: #ff8c00;
       cursor: pointer;
-      color: red;
-      font-size: 18px;
-      font-weight: bold;
-      float: right;
     }
-    .blog-post {
-      margin: 20px auto;
-      width: 90%;
-      max-width: 600px;
-      border: 2px solid #000;
-      background-color: #ffffcc;
-      padding: 10px;
-      box-shadow: 5px 5px 10px #000;
-    }
-    .blog-title {
-      font-size: 1.2em;
-      font-weight: bold;
-      color: #008000;
-      margin-bottom: 5px;
-    }
-    .blog-date {
-      font-size: 0.9em;
-      color: #555;
-      margin-bottom: 10px;
-    }
-    .blog-content {
-      display: none;
-    }
-    .read-more {
-      color: blue;
-      text-decoration: underline;
-      cursor: pointer;
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .blog-post {
+        width: 90%;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>My 90's Blog</h1>
+  <h1>Modern Blog</h1>
   <div class="navbar">
     <a href="#" onclick="showPopup('about-popup')">About</a>
     <a href="#" onclick="showPopup('contact-popup')">Contact</a>
@@ -96,7 +139,7 @@
   <div id="about-popup" class="popup">
     <span class="popup-close" onclick="hidePopup('about-popup')">&times;</span>
     <h3>About Me</h3>
-    <p>I'm a passionate blogger sharing my thoughts on programming, projects, and more!</p>
+    <p>I'm a developer and blogger sharing my journey with the tech world and beyond.</p>
   </div>
   <div id="contact-popup" class="popup">
     <span class="popup-close" onclick="hidePopup('contact-popup')">&times;</span>
@@ -110,7 +153,7 @@
     <div class="blog-title">Learning Swift</div>
     <div class="blog-date">Posted on November 20, 2024</div>
     <div class="blog-intro">Swift is a powerful programming language for iOS development...</div>
-    <div class="blog-content"> Swift is designed to be safe, fast, and interactive. It's perfect for building apps for Apple's ecosystem.</div>
+    <div class="blog-content">Swift is designed to be safe, fast, and interactive. It's perfect for building apps for Apple's ecosystem.</div>
     <div class="read-more">Devamını oku</div>
   </div>
 
@@ -118,7 +161,7 @@
     <div class="blog-title">Netz: The Future of Payments</div>
     <div class="blog-date">Posted on November 19, 2024</div>
     <div class="blog-intro">Netz is my vision for a decentralized cryptocurrency payment system...</div>
-    <div class="blog-content"> Netz would allow fast, secure, and low-cost transactions globally, making it a game-changer for businesses.</div>
+    <div class="blog-content">Netz would allow fast, secure, and low-cost transactions globally, making it a game-changer for businesses.</div>
     <div class="read-more">Devamını oku</div>
   </div>
 
@@ -126,7 +169,7 @@
     <div class="blog-title">Ulas.co: A New Logistics Idea</div>
     <div class="blog-date">Posted on November 18, 2024</div>
     <div class="blog-intro">Imagine an Uber-style system, but only for cargo and packages...</div>
-    <div class="blog-content"> With Ulas.co, individuals and businesses could connect with reliable drivers to transport goods quickly and securely.</div>
+    <div class="blog-content">With Ulas.co, individuals and businesses could connect with reliable drivers to transport goods quickly and securely.</div>
     <div class="read-more">Devamını oku</div>
   </div>
 
